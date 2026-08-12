@@ -299,7 +299,7 @@ function saveTransaction() {
 
                 note: note,
 
-                date: new Date().toLocaleString()
+                date: new Date().toISOString()
             };
 
 
@@ -361,7 +361,7 @@ function saveTransaction() {
 
             note: note,
 
-            date: new Date().toLocaleString()
+            date: new Date().toISOString()
         };
 
 
