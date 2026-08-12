@@ -1,10 +1,500 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>HsuMoney</title>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HsuMoney</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-  <h1>HsuMoney</h1>
-  <p>မင်္ဂလာပါ။ HsuMoney မှ ကြိုဆိုပါတယ်။</p>
+
+<div class="container">
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <h1>🏦 HsuMoney</h1>
+
+
+    <!-- ========================================
+         WALLET BALANCES
+    ========================================= -->
+
+<h2>💼 Wallet Balances</h2>
+
+<div class="card">
+    <span>💵 Cash</span>
+    <span>
+        <span id="cashBalance">0 Ks</span>
+        <button onclick="editWallet('cash', 'Cash')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>📱 KBZPay</span>
+    <span>
+        <span id="kpayBalance">0 Ks</span>
+        <button onclick="editWallet('kbzpay', 'KBZPay')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>🌊 Wave</span>
+    <span>
+        <span id="waveBalance">0 Ks</span>
+        <button onclick="editWallet('wave', 'Wave')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>🏪 Wave Agent</span>
+    <span>
+        <span id="agentBalance">0 Ks</span>
+        <button onclick="editWallet('agent', 'Wave Agent')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>🛒 KPay Merchant</span>
+    <span>
+        <span id="merchantBalance">0 Ks</span>
+        <button onclick="editWallet('merchant', 'KPay Merchant')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>🟦 CB Pay</span>
+    <span>
+        <span id="cbpayBalance">0 Ks</span>
+        <button onclick="editWallet('cbpay', 'CB Pay')">✏️</button>
+    </span>
+</div>
+
+<div class="card">
+    <span>🟥 AYA Pay</span>
+    <span>
+        <span id="ayapayBalance">0 Ks</span>
+        <button onclick="editWallet('ayapay', 'AYA Pay')">✏️</button>
+    </span>
+</div>
+
+<div class="card total">
+    <span>💰 Total Balance</span>
+    <span id="totalBalance">0 Ks</span>
+</div>
+
+<div class="card">
+    <span>📈 Today's Profit</span>
+    <span id="profitBalance">0 Ks</span>
+</div>
+
+
+
+    <!-- ========================================
+         OPENING BALANCE
+    ========================================= -->
+
+    <section class="opening-balance-section">
+
+        <h2>💰 Opening Balance</h2>
+
+        <p>စတင်လက်ကျန်ငွေ ထည့်ရန်</p>
+
+
+        <input
+            type="number"
+            id="openingCash"
+            placeholder="Cash"
+        >
+
+        <input
+            type="number"
+            id="openingKpay"
+            placeholder="KPay"
+        >
+
+        <input
+            type="number"
+            id="openingWave"
+            placeholder="Wave"
+        >
+
+        <input
+            type="number"
+            id="openingAgent"
+            placeholder="Wave Agent"
+        >
+
+        <input
+            type="number"
+            id="openingMerchant"
+            placeholder="KPay Merchant"
+        >
+
+        <input
+            type="number"
+            id="openingCbpay"
+            placeholder="CB Pay"
+        >
+
+        <input
+            type="number"
+            id="openingAyapay"
+            placeholder="AYA Pay"
+        >
+
+
+        <br><br>
+
+
+        <button id="openingBalanceBtn">
+            💾 Save Opening Balance
+        </button>
+
+
+        <button id="editOpeningBalanceBtn">
+            ✏️ Edit Opening Balance
+        </button>
+
+    </section>
+
+
+
+    <!-- ========================================
+         DASHBOARD
+    ========================================= -->
+
+    <section class="dashboard-section">
+
+        <h2>📊 Dashboard</h2>
+
+        <div class="dashboard-card">
+
+            <p>
+                💰 Total Balance:
+                <strong id="dashboardTotalBalance">
+                    0 Ks
+                </strong>
+            </p>
+
+
+            <p>
+                💵 Total Profit:
+                <strong id="dashboardProfit">
+                    0 Ks
+                </strong>
+            </p>
+
+
+            <p>
+                📊 Today Transactions:
+                <strong id="todayTransactionCount">
+                    0
+                </strong>
+            </p>
+
+
+            <p>
+                💸 Today Fee:
+                <strong id="todayFee">
+                    0 Ks
+                </strong>
+            </p>
+
+
+            <p>
+                📅 This Month Transactions:
+                <strong id="monthTransactionCount">
+                    0
+                </strong>
+            </p>
+
+
+            <p>
+                💰 This Month Fee:
+                <strong id="monthFee">
+                    0 Ks
+                </strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         NEW TRANSACTION
+    ========================================= -->
+
+    <h2>➕ New Transaction</h2>
+
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Customer Name"
+    >
+
+
+    <input
+        type="text"
+        id="phone"
+        placeholder="Phone Number"
+    >
+
+
+    <input
+        type="number"
+        id="amount"
+        placeholder="Amount (Ks)"
+    >
+
+
+    <input
+        type="number"
+        id="fee"
+        placeholder="Service Fee"
+    >
+
+
+    <select id="feeMode">
+
+        <option value="separate">
+            Fee သီးသန့်ယူ (A)
+        </option>
+
+        <option value="deduct">
+            Fee နှုတ်ပေး (B)
+        </option>
+
+    </select>
+
+
+    <select id="transactionType">
+
+        <option>Cash ➜ KBZPay</option>
+
+        <option>KBZPay ➜ Cash</option>
+
+        <option>Cash ➜ Wave</option>
+
+        <option>Wave ➜ Cash</option>
+
+        <option>Cash ➜ Wave Agent</option>
+
+        <option>Wave Agent ➜ Cash</option>
+
+        <option>Cash ➜ KPay Merchant</option>
+
+        <option>KPay Merchant ➜ Cash</option>
+
+        <option>Cash ➜ CB Pay</option>
+
+        <option>CB Pay ➜ Cash</option>
+
+        <option>Cash ➜ AYA Pay</option>
+
+        <option>AYA Pay ➜ Cash</option>
+
+    </select>
+
+
+    <textarea
+        id="note"
+        placeholder="Note (optional)"
+    ></textarea>
+
+
+    <button id="saveBtn">
+        💾 Save Transaction
+    </button>
+
+
+
+    <!-- ========================================
+         TRANSACTION SEARCH
+    ========================================= -->
+
+    <input
+        type="text"
+        id="searchTransaction"
+        placeholder="🔍 Customer / Phone / Voucher ရှာရန်"
+    >
+
+
+    <input
+        type="date"
+        id="historyDate"
+    >
+
+
+    <button id="clearHistoryFilter">
+        🔄 All
+    </button>
+
+
+
+    <!-- ========================================
+         TRANSACTION HISTORY
+    ========================================= -->
+
+    <h2>📋 Transaction History</h2>
+
+
+    <div id="customerSummary"></div>
+
+
+    <div id="receiptArea"></div>
+
+
+    <div id="transactionHistory"></div>
+
+
+
+    <!-- ========================================
+         REPORTS
+    ========================================= -->
+
+    <section class="report-section">
+
+        <h2>📊 Reports</h2>
+
+
+        <div class="report-buttons">
+
+            <button id="todayReportBtn">
+                📅 Today
+            </button>
+
+
+            <button id="monthReportBtn">
+                📆 This Month
+            </button>
+
+
+            <button id="allReportBtn">
+                📋 All
+            </button>
+
+        </div>
+
+
+        <div id="reportResult">
+
+            <p>
+                Report မရွေးရသေးပါ။
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================
+         BACKUP & RESTORE
+    ========================================= -->
+
+    <section class="backup-section">
+
+        <h2>💾 Backup & Restore</h2>
+
+
+        <button onclick="createBackup()">
+            💾 Backup Data
+        </button>
+
+
+        <div
+            id="backupBox"
+            style="display:none;"
+        >
+
+            <h3>📦 Backup Data</h3>
+
+
+            <textarea
+                id="backupText"
+                style="width:100%; height:250px;"
+                readonly
+            ></textarea>
+
+
+            <br><br>
+
+
+            <button onclick="copyBackup()">
+                📋 Copy Backup
+            </button>
+
+
+            <button onclick="closeBackup()">
+                ❌ Close
+            </button>
+
+        </div>
+
+
+        <button onclick="openRestore()">
+            📂 Restore Data
+        </button>
+
+
+        <div
+            id="restoreBox"
+            style="display:none;"
+        >
+
+            <h3>📂 Restore Backup</h3>
+
+
+            <textarea
+                id="restoreText"
+                placeholder="Backup Data ကို ဒီနေရာမှာ Paste လုပ်ပါ..."
+                style="width:100%; height:250px;"
+            ></textarea>
+
+
+            <br><br>
+
+
+            <button onclick="restoreFromText()">
+                ♻️ Restore
+            </button>
+
+
+            <button onclick="closeRestore()">
+                ❌ Close
+            </button>
+
+        </div>
+
+
+        <input
+            type="file"
+            id="restoreFile"
+            accept=".json"
+            style="display:none;"
+        >
+
+    </section>
+
+
+</div>
+
+
+<script src="app.js"></script>
+
 </body>
+
 </html>
